@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TR Medellín</title>
+  <style>
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      background:#0b0f0b;
+      color:white;
+    }
+    header{
+      background:#111;
+      padding:20px;
+      text-align:center;
+      border-bottom:2px solid #1faa00;
+    }
+    h1{
+      margin:0;
+      color:#4cff4c;
+    }
+    .container{
+      padding:16px;
+    }
+    .card{
+      background:#151a15;
+      border:1px solid #1faa00;
+      border-radius:14px;
+      padding:16px;
+      margin-bottom:16px;
+    }
+    input, select{
+      width:100%;
+      padding:12px;
+      margin-top:8px;
+      margin-bottom:12px;
+      border-radius:10px;
+      border:none;
+      background:#222;
+      color:white;
+      box-sizing:border-box;
+    }
+    button{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:12px;
+      background:#1faa00;
+      color:white;
+      font-weight:bold;
+      font-size:16px;
+    }
+    .total{
+      font-size:22px;
+      color:#4cff4c;
+      font-weight:bold;
+      text-align:center;
+    }
+    .small{
+      color:#aaa;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>TR Medellín</h1>
+  <div>Alquiler de motos</div>
+</header>
+<div class="container">
+  <div class="card">
+    <h2>Conductor</h2>
+    <input placeholder="Nombre completo">
+    <input placeholder="Cédula">
+    <input placeholder="Teléfono">
+    <input placeholder="Dirección">
+    <button>Guardar conductor</button>
+  </div>
+  <div class="card">
+    <h2>Vehículo</h2>
+    <input placeholder="Placa">
+    <input placeholder="Marca y modelo">
+    <select>
+      <option>Disponible</option>
+      <option>Alquilada</option>
+      <option>Taller</option>
+    </select>
+    <button>Guardar vehículo</button>
+  </div>
+  <div class="card">
+    <h2>Contratos PDF</h2>
+    <input type="file" accept=".pdf">
+    <button>Guardar contrato</button>
+  </div>
+  <div class="card">
+    <h2>Documentos del vehículo</h2>
+    <input type="file" accept="image/*,.pdf" multiple>
+    <button>Guardar documentos</button>
+  </div>
+  <div class="card">
+    <h2>Liquidación semanal</h2>
+    <label>Valor semanal</label>
+    <input id="valor" value="180000" type="number">
+<label>Pago recibido</label>
+<input id="pago" type="number" placeholder="0">
+<button onclick="calcular()">Calcular saldo</button>
+<p class="total" id="saldo">$180.000</p>
+  </div>
+  <div class="card">
+    <h2>Resumen del negocio</h2>
+    <p>Capacidad: <b>50 motos</b></p>
+    <p>Valor semanal por moto: <b>$180.000</b></p>
+    <p class="small">Versión web privada para iPhone</p>
+  </div>
+</div>
+<script>
+function calcular(){
+  const valor = Number(document.getElementById('valor').value || 0);
+  const pago = Number(document.getElementById('pago').value || 0);
+  const saldo = valor - pago;
+  document.getElementById('saldo').innerText =
+    '$' + saldo.toLocaleString('es-CO');
+}
+</script>
+</body>
+</html>
